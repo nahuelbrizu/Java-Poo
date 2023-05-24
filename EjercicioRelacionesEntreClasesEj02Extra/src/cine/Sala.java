@@ -3,6 +3,7 @@ package cine;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+
 public class Sala {
     String[][] asientos = new String[8][6];
 
@@ -25,25 +26,28 @@ public class Sala {
         String[] fila = {"A","B","C","D","E","F"};
         for (int i = asientos.length - 1; i >= 0;i--){
             for (int x = 0; x < 6; x++){
-                asientos[i][x] = asientos.length - i + " " + fila[x] + " ";
+                String ocupado = ocupados(i);
+                asientos[i][x] = asientos.length - i + " " + fila[x] + " " + ocupado ;
             }
         }
         return asientos;
     }
 
-    public String[][] ocupados(String[][] asientos){
-
-        for (int i = asientos.length - 1; i >= 0;i--){
-            for (int x = 0; x < 6; x++){
-                asientos[i][x] = "x";
+    public String ocupados(int i ){
+        String string = "";
+            if (i % 2 == 0) {
+                string = " ";
+              return string;
+            } else {
+                string = "x";
+              return string;
             }
-        }
-        return asientos;
+
     }
 
     public void mostarAsientos(String[][] asientos){
         for (String[] asiento:asientos) {
-            System.out.println(asiento.toString());
+            System.out.println(Arrays.toString(asiento));
         }
     }
 }
