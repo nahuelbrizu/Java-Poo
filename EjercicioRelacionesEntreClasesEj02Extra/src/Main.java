@@ -1,10 +1,18 @@
+import cine.Espectador;
+import cine.Pelicula;
 import cine.Sala;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        Pelicula pelicula = new Pelicula("Palmer", 12, 1.30,"Fisher Stevens");
+        Espectador espectador = new Espectador();
+        ArrayList<Espectador> espectador1 = Espectador.crearEspec();
+
         Sala sala = new Sala();
         String[][] sala1;
-        sala1 = sala.crearAsientos();
+        sala1 = sala.crearAsientos(espectador1);
         sala.mostarAsientos(sala1);
 
     }

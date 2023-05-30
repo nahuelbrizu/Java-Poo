@@ -1,7 +1,6 @@
 package cine;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.*;
 
 
 public class Sala {
@@ -22,24 +21,26 @@ public class Sala {
         this.asientos = asientos;
     }
 
-    public String[][] crearAsientos(){
+    public String[][] crearAsientos(ArrayList<Espectador> espectador){
         String[] fila = {"A","B","C","D","E","F"};
         for (int i = asientos.length - 1; i >= 0;i--){
             for (int x = 0; x < 6; x++){
-                String ocupado = ocupados(i);
-                asientos[i][x] = asientos.length - i + " " + fila[x] + " " + ocupado ;
+                String ocupado = ocupados();
+
+               asientos[i][x] = asientos.length - i + " " + fila[x] + " " + ocupado;
             }
         }
         return asientos;
     }
 
-    public String ocupados(int i ){
+    public String ocupados(){
         String string = "";
-            if (i % 2 == 0) {
-                string = " ";
+        Random random = new Random();
+        if (random.nextBoolean()) {
+            string = "X";
               return string;
             } else {
-                string = "x";
+                string = " ";
               return string;
             }
 

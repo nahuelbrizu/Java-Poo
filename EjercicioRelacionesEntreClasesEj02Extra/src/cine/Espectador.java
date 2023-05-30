@@ -1,11 +1,23 @@
 package cine;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Espectador {
     private String nombre;
     private int edad;
+    private static ArrayList<Espectador> espectadores = new ArrayList<>();
+
     private double dineroDisponible;
+
+    public ArrayList<Espectador> getEspectadores() {
+        return espectadores;
+    }
+
+    public void setEspectadores(ArrayList<Espectador> espectadores) {
+        this.espectadores = espectadores;
+    }
+
 
     public Espectador() {
     }
@@ -40,22 +52,24 @@ public class Espectador {
         this.dineroDisponible = dineroDisponible;
     }
 
-    public void crearEspec(){
+    public static  ArrayList<Espectador> crearEspec(){
         Random random = new Random(60);
         for(int i = 40; i >= 0; i--){
             int edad = random.nextInt();
             double dinero = random.nextDouble();
-            new Espectador("nombre", edad, dinero);
-
+            Espectador  espectador =  new Espectador("nombre", edad, dinero);
+            espectadores.add(espectador);
         }
+        return espectadores;
     }
+
 
     @Override
     public String toString() {
         return "Espectador{" +
                 "nombre='" + nombre + '\'' +
                 ", edad=" + edad +
-                ", dinero disponible=" + dineroDisponible +
+                ", dineroDisponible=" + dineroDisponible +
                 '}';
     }
 }
