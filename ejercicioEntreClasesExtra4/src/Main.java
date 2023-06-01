@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Simulador simulador = new Simulador();
 
-        List<Alumno> alumnos = simulador.generarAlumnos(20);
+        List<Alumno> alumnos = simulador.generarAlumnos(10);
         simulador.imprimirListadoAlumnos(alumnos);
 
         Set<Alumno> votados = simulador.votacion(alumnos);
