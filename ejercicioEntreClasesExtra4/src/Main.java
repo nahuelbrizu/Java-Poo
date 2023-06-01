@@ -1,26 +1,18 @@
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private static final Scanner inp = new Scanner(System.in);
     public static void main(String[] args) {
         Simulador simulador = new Simulador();
-        System.out.print("ingrese cuantos alumnos desea Crear : ");
-        int cantAlumnos = inp.nextInt();
-        for (int i = cantAlumnos; i > 0; i--) {
-            List<String> sim = Simulador.crearNombres();
-            List<String> simDni = Simulador.crearDni();
 
-            simulador.votacion(Simulador.crearAlumno(sim, simDni));
-            simulador.recuentoVotos();
-            simulador.mostrarResultados();
+        List<Alumno> alumnos = simulador.generarAlumnos(20);
+        simulador.imprimirListadoAlumnos(alumnos);
 
-        }
+        Set<Alumno> votados = simulador.votacion(alumnos);
+        simulador.mostrarResultadosVotacion(new ArrayList<>(votados));
 
+        simulador.recuentoVotos(alumnos);
     }
-
-
-
 }
 
 
