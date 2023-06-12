@@ -48,27 +48,28 @@ public class Simulador {
 
         for (Alumno alumno : alumnos) {
             System.out.println("Nombre: " + alumno.getNombreCompleto() + ", DNI: " + alumno.getDni());
+            System.out.println(" ");
 
         }
     }
     public Set<Alumno> votacion(List<Alumno> alumnoList) {
         Random random = new Random();
-        Set<Alumno> votados = new HashSet<>(); // Creación del conjunto de alumnos votados
+        Set<Alumno> votados = new HashSet<>();
 
-        for (Alumno votante : alumnoList) { // Iteración sobre cada alumno de la lista
-            Voto voto = new Voto(votante); // Creación de un objeto Voto con el votante como votante
+        for (Alumno votante : alumnoList) {
+            Voto voto = new Voto(votante);
 
-            while (voto.getAlumnosVotados().size() < 3) { // Bucle hasta que se generen 3 votos
-                int indiceVotado = random.nextInt(alumnoList.size()); // Generación de un índice aleatorio
-                Alumno votado = alumnoList.get(indiceVotado); // Obtención del alumno correspondiente al índice
+            while (voto.getAlumnosVotados().size() <= 3) {
+                int indiceVotado = random.nextInt(alumnoList.size());
+                Alumno votado = alumnoList.get(indiceVotado);
 
-                if (votado != votante) { // Verificación de que el alumno votado sea diferente al votante
-                    voto.getAlumnosVotados().add(votado); // Agregamos al alumno votado al conjunto de alumnos votados en el voto
-                    votado.setCantidadVotos(votado.getCantidadVotos() + 1); // Incremento en 1 la cantidad de votos del alumno votado
+                if (votado != votante) {
+                    voto.getAlumnosVotados().add(votado);
+                    votado.setCantidadVotos(votado.getCantidadVotos() + 1);
                 }
             }
 
-            votados.add(votante); // Agregamos al votante al conjunto de alumnos votados
+            votados.add(votante);
         }
 
         return votados; // Retornamos el conjunto de alumnos votados
@@ -82,7 +83,7 @@ public class Simulador {
             System.out.println("Votos recibidos:");
 
             for (Alumno votante : alumnos) {
-                if (votante.getCantidadVotos() > 0 && votante != alumno) {
+                if (votante.getCantidadVotos() > 0  && votante != alumno) {
                     System.out.println("- " + votante.getNombreCompleto());
                 }
             }
@@ -103,7 +104,8 @@ public class Simulador {
             facilitadoresSuplentes.add(alumnos.get(i + 5));
         }
 
-        System.out.println("---------Facilitadores----------------");        imprimirListadoAlumnos(facilitadores);
+        System.out.println("---------Facilitadores----------------");
+        imprimirListadoAlumnos(facilitadores);
         System.out.println("-----Facilitadores--Suplentes-----");
         imprimirListadoAlumnos(facilitadoresSuplentes);
     }
