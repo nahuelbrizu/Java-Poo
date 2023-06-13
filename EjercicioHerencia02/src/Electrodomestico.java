@@ -90,16 +90,12 @@ public class Electrodomestico {
        int pesoComprobado = 0;
         if(peso >= 80){
             pesoComprobado = 1000;
-            return 1000;
         } if (peso <= 79){
-            pesoComprobado =800;
-            return 800;
+            pesoComprobado = 800;
         }  if (peso < 50){
             pesoComprobado = 500;
-            return 500;
         }  if (peso < 10){
             pesoComprobado= 100;
-            return 100;
         }
         return pesoComprobado;
     }
@@ -134,7 +130,7 @@ public class Electrodomestico {
         Colores colores = comprobarColor(scanner.nextLine());
 
 
-        System.out.println("Ingrese el consumo del electrodoméstico (A, B, C, D o E): ");
+        System.out.println("Ingrese el consumo del electrodoméstico (A, B, C, D, E o F): ");
         char consumo = scanner.next().charAt(0);
 
         System.out.println("Ingrese el peso del electrodoméstico : ");
